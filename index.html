@@ -15,7 +15,9 @@
           display: grid;
           grid-template-columns: 2fr 10fr;
         }
-
+        #firstdiv:hover {
+          cursor: pointer;
+        }
         #red,
         #darkcyan,
         #darkblue {
@@ -29,13 +31,24 @@
           display: flex;
           justify-content: center;
           align-items: center;
+          height: 100vh;
+          width: 100%;
         }
         #seconddiv div {
           font-size: 2rem;
           font-weight: bold;
         }
+        #cursor {
+          height: 40px;
+          width: 40px;
+          border: 1px solid darkgoldenrod;
+          border-radius: 50%;
+        }
       }
       @media screen and (max-width: 575px) {
+        #firstdiv:hover {
+          cursor: pointer;
+        }
         #red,
         #darkcyan,
         #darkblue {
@@ -57,10 +70,17 @@
           display: flex;
           justify-content: center;
           align-items: center;
+          width: 100%;
         }
         #seconddiv div {
           font-size: 1rem;
           font-weight: bold;
+        }
+        #cursor {
+          height: 40px;
+          width: 40px;
+          border: 1px solid darkgoldenrod;
+          border-radius: 50%;
         }
       }
     </style>
@@ -74,10 +94,16 @@
       function Bluecolor(color) {
         document.querySelector("#text").style.color = color;
       }
+      function Getmousercurser(e) {
+        var cursor = document.getElementById("cursor");
+        cursor.style.position = "fixed";
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+      }
     </script>
   </head>
   <body>
-    <section>
+    <section onmousemove="Getmousercurser(event)">
       <div id="firstdiv">
         <div class="colorcontainer">
           <div
@@ -107,5 +133,6 @@
         <div id="text">You Can Change Text Color</div>
       </div>
     </section>
+    <div id="cursor"></div>
   </body>
 </html>
